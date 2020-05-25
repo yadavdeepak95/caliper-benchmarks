@@ -36,3 +36,18 @@ For instance, to run the benchmark that targets the Fabric Marbles sample agains
 	```
 ## Extending the Documented Reports
 The documented reports are built automatically from the `reports` branch of this repository and subsequently hosted on the `gh-pages` branch; pull requests must be target the [`reports` branch](https://github.com/hyperledger/caliper-benchmarks/tree/reports) in order for any modifications to be built.
+
+## steps to run
+
+```bash
+cd caliper-benchmark
+npm init -y
+npm install --only=prod \
+    @hyperledger/caliper-cli@0.3.0
+npx caliper bind \
+    --caliper-bind-sut fabric:1.4.0
+npx caliper launch master \
+    --caliper-workspace . \
+    --caliper-benchconfig benchmarks/scenario/simple/config.yaml \
+    --caliper-networkconfig networks/fabric/fabric-v1.4.1/2org1peergoleveldb/fabric-go.yaml
+```
